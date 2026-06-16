@@ -414,7 +414,7 @@
     .pdf-canvas-container::-webkit-scrollbar-thumb { background: #7f8285; border-radius: 3px; }
     .pdf-canvas-container canvas {
       display: block;
-      width: 100%;
+      /* width/height controlled by JS for DPR-aware rendering */
       margin-bottom: 8px;
       border-radius: 2px;
     }
@@ -1436,24 +1436,39 @@
       const pdf = await lib.getDocument(pdfUrl).promise;
       container.innerHTML = '';
 
+      // devicePixelRatio: Retina(2x) 등 고해상도 디스플레이에서 선명하게 렌더링
+      const dpr = window.devicePixelRatio || 1;
+
       for (let n = 1; n <= pdf.numPages; n++) {
-        const page  = await pdf.getPage(n);
-        const baseW = container.clientWidth - 20;
+        const page = await pdf.getPage(n);
+
+        // CSS 논리 픽셀 너비 (padding 10px × 2 = 20px 제외)
+        let cssW = container.clientWidth - 20;
+        if (cssW < 50) cssW = container.offsetWidth - 20 || 700;
+
         const baseVp = page.getViewport({ scale: 1 });
-        const vp = page.getViewport({ scale: Math.max(baseW / baseVp.width, 0.5) });
+        const cssScale = cssW / baseVp.width;
+
+        // 물리 픽셀 기준으로 렌더 (dpr 배율 적용)
+        const renderVp = page.getViewport({ scale: cssScale * dpr });
 
         const canvas = document.createElement('canvas');
-        canvas.width  = vp.width;
-        canvas.height = vp.height;
-        Object.assign(canvas.style, { display: 'block', width: '100%', marginBottom: '8px' });
+        canvas.width  = Math.round(renderVp.width);   // 물리 픽셀
+        canvas.height = Math.round(renderVp.height);  // 물리 픽셀
 
-        await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+        // CSS 크기는 논리 픽셀로 고정 (브라우저가 dpr 배율로 매핑)
+        const cssH = Math.round(renderVp.height / dpr);
+        canvas.style.cssText = `display:block;width:${cssW}px;height:${cssH}px;margin-bottom:8px;border-radius:2px;`;
+
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport: renderVp }).promise;
         container.appendChild(canvas);
       }
     } catch (err) {
+      container.dataset.rendered = '';  // 실패 시 재시도 허용
       container.innerHTML =
         '<p style="padding:24px 16px;color:#f87171;text-align:center;font-size:13px">' +
-        'PDF 로드 실패.<br>VS Code Live Server나 GitHub Pages에서 확인하세요.</p>';
+        'PDF 로드 실패: ' + err.message + '<br>' +
+        '<small style="color:#94a3b8">GitHub Pages 또는 VS Code Live Server에서 실행 필요</small></p>';
       console.error('PDF 렌더링 오류:', err);
     }
   }
