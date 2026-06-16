@@ -399,13 +399,24 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
       position: relative;
     }
-    .presenter-pdf iframe {
+    .pdf-canvas-container {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
+      top: 0; left: 0; right: 0; bottom: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 10px;
+      background: #525659;
+      box-sizing: border-box;
+    }
+    .pdf-canvas-container:focus { outline: none; }
+    .pdf-canvas-container::-webkit-scrollbar { width: 6px; }
+    .pdf-canvas-container::-webkit-scrollbar-track { background: #3d3f42; }
+    .pdf-canvas-container::-webkit-scrollbar-thumb { background: #7f8285; border-radius: 3px; }
+    .pdf-canvas-container canvas {
       display: block;
+      width: 100%;
+      margin-bottom: 8px;
+      border-radius: 2px;
     }
     .presenter-header {
       margin-bottom: 18px;
@@ -889,7 +900,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/01_최우석_AI를_활용한_신용평가사_업무효율화_발표자료.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/01_최우석_AI를_활용한_신용평가사_업무효율화_발표자료.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -925,7 +936,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/02_김학훈_AI_기반_법률_문서_처리_및_모의공방_서비스_개발.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/02_김학훈_AI_기반_법률_문서_처리_및_모의공방_서비스_개발.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -961,7 +972,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/03_남효승_LLM_Wiki_기반_건축_설계_지식_자산화_전략.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/03_남효승_LLM_Wiki_기반_건축_설계_지식_자산화_전략.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -996,7 +1007,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/04_조순진_AI_기반의_외관검사_혁신.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/04_조순진_AI_기반의_외관검사_혁신.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -1031,7 +1042,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/05_김도영_Venture_Capital_AI_transformation.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/05_김도영_Venture_Capital_AI_transformation.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -1066,7 +1077,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/06_전행진_AI와_함께_책을_쓴다는_것.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/06_전행진_AI와_함께_책을_쓴다는_것.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -1102,7 +1113,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/07_배승환_AI_프로젝트와_AX문화도입.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/07_배승환_AI_프로젝트와_AX문화도입.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -1137,7 +1148,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/08_정훈_전사_AX_추진_및_성과.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/08_정훈_전사_AX_추진_및_성과.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -1172,7 +1183,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/09_최인욱_AI_기반_개인거래_Trust_Infra_구축_전략.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/09_최인욱_AI_기반_개인거래_Trust_Infra_구축_전략.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -1208,7 +1219,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/10_김홍래_휴플_AX.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/10_김홍래_휴플_AX.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -1243,7 +1254,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/11_이근우_PR_Intelligence_Platform_개념_설계와_구현_여정.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/11_이근우_PR_Intelligence_Platform_개념_설계와_구현_여정.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -1278,7 +1289,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/12_유경선_AI_기반_경영자_의사결정의_체험실행과_고도화_방안.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/12_유경선_AI_기반_경영자_의사결정의_체험실행과_고도화_방안.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -1313,7 +1324,7 @@
     </div>
     </div>
     <div class="presenter-pdf">
-      <iframe src="pdfs/13_박세현_End-to-End_AI_B2B_SCM_시스템.pdf#toolbar=1" title="발표자료"></iframe>
+      <div class="pdf-canvas-container" data-pdf="pdfs/13_박세현_End-to-End_AI_B2B_SCM_시스템.pdf" tabindex="-1"></div>
     </div>
   </div>
 </div>
@@ -1366,15 +1377,18 @@
   // PDF 패널 위에 마우스가 있을 때 키보드 슬라이드 전환 억제
   let overPdf = false;
   document.querySelectorAll('.presenter-pdf').forEach(el => {
-    el.addEventListener('mouseenter', () => { overPdf = true; });
+    el.addEventListener('mouseenter', () => {
+      overPdf = true;
+      const c = el.querySelector('.pdf-canvas-container');
+      if (c) c.focus();
+    });
     el.addEventListener('mouseleave', () => { overPdf = false; });
-    // 마우스 휠 이벤트가 슬라이드 전환으로 새어나가지 않도록 차단
     el.addEventListener('wheel', e => { e.stopPropagation(); }, { passive: true });
   });
 
   document.addEventListener('keydown', e => {
-    // PDF iframe에 포커스가 있거나 PDF 위에 마우스가 있으면 슬라이드 전환 안 함
-    if (overPdf || document.activeElement.tagName === 'IFRAME') return;
+    const ae = document.activeElement;
+    if (overPdf || (ae && ae.classList.contains('pdf-canvas-container'))) return;
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
       e.preventDefault(); go(cur + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
@@ -1390,6 +1404,76 @@
   });
 
   render();
+  // ── PDF.js 기반 PDF 렌더링 ───────────────────────────────────────
+  const PDFJS_SRC    = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+  const PDFJS_WORKER = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  let _pdfLibPromise = null;
+
+  function loadPdfLib() {
+    if (_pdfLibPromise) return _pdfLibPromise;
+    _pdfLibPromise = new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = PDFJS_SRC;
+      s.onload = () => {
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
+        resolve(window.pdfjsLib);
+      };
+      s.onerror = () => reject(new Error('PDF.js 로드 실패'));
+      document.head.appendChild(s);
+    });
+    return _pdfLibPromise;
+  }
+
+  async function renderPdfInContainer(container) {
+    if (container.dataset.rendered) return;
+    container.dataset.rendered = '1';
+
+    const pdfUrl = container.dataset.pdf;
+    container.innerHTML = '<p style="padding:24px 16px;color:#94a3b8;text-align:center;font-size:13px">PDF 로딩 중…</p>';
+
+    try {
+      const lib = await loadPdfLib();
+      const pdf = await lib.getDocument(pdfUrl).promise;
+      container.innerHTML = '';
+
+      for (let n = 1; n <= pdf.numPages; n++) {
+        const page  = await pdf.getPage(n);
+        const baseW = container.clientWidth - 20;
+        const baseVp = page.getViewport({ scale: 1 });
+        const vp = page.getViewport({ scale: Math.max(baseW / baseVp.width, 0.5) });
+
+        const canvas = document.createElement('canvas');
+        canvas.width  = vp.width;
+        canvas.height = vp.height;
+        Object.assign(canvas.style, { display: 'block', width: '100%', marginBottom: '8px' });
+
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+        container.appendChild(canvas);
+      }
+    } catch (err) {
+      container.innerHTML =
+        '<p style="padding:24px 16px;color:#f87171;text-align:center;font-size:13px">' +
+        'PDF 로드 실패.<br>VS Code Live Server나 GitHub Pages에서 확인하세요.</p>';
+      console.error('PDF 렌더링 오류:', err);
+    }
+  }
+
+  // 슬라이드 활성화 시 PDF 렌더링 (MutationObserver)
+  new MutationObserver(mutations => {
+    for (const m of mutations) {
+      if (m.type === 'attributes' && m.target.classList.contains('active')) {
+        const c = m.target.querySelector('.pdf-canvas-container');
+        if (c) renderPdfInContainer(c);
+      }
+    }
+  }).observe(document.querySelector('.slides-wrapper'), {
+    subtree: true, attributes: true, attributeFilter: ['class']
+  });
+
+  // 첫 활성 슬라이드에 PDF가 있으면 즉시 렌더링 시작
+  const _initPdf = document.querySelector('.slide.active .pdf-canvas-container');
+  if (_initPdf) renderPdfInContainer(_initPdf);
+
 </script>
 </body>
 </html>
