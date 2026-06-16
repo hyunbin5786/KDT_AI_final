@@ -1433,7 +1433,12 @@
 
     try {
       const lib = await loadPdfLib();
-      const pdf = await lib.getDocument(pdfUrl).promise;
+      const pdf = await lib.getDocument({
+        url: pdfUrl,
+        cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
+        cMapPacked: true,
+        standardFontDataUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/standard_fonts/',
+      }).promise;
       container.innerHTML = '';
 
       // devicePixelRatio: Retina(2x) 등 고해상도 디스플레이에서 선명하게 렌더링
