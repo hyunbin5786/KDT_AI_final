@@ -379,8 +379,30 @@
     /* ── Presenter slides ──────────────────── */
     .presenter-slide {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       height: 100%;
+      gap: 20px;
+    }
+    .presenter-left {
+      width: 340px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    .presenter-pdf {
+      flex: 1;
+      min-height: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .presenter-pdf iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
     }
     .presenter-header {
       margin-bottom: 18px;
@@ -394,7 +416,7 @@
       margin-bottom: 10px;
     }
     .presenter-name {
-      font-size: 36px;
+      font-size: 26px;
       font-weight: 800;
       color: var(--heading);
       line-height: 1.1;
@@ -407,7 +429,7 @@
       margin-bottom: 12px;
     }
     .presenter-subtitle {
-      font-size: 17px;
+      font-size: 14px;
       color: var(--text);
       line-height: 1.55;
       font-style: italic;
@@ -417,16 +439,17 @@
       border-left: 4px solid;
     }
     .presenter-sections {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       flex: 1;
       min-height: 0;
+      overflow-y: auto;
     }
     .presenter-section {
       background: var(--card);
       border-radius: 14px;
-      padding: 20px 22px;
+      padding: 14px 16px;
       border: 1px solid var(--border);
       border-top: 4px solid;
       box-shadow: 0 1px 4px rgba(0,0,0,0.04);
@@ -437,6 +460,8 @@
     }
     .presenter-section::-webkit-scrollbar { width: 4px; }
     .presenter-section::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 2px; }
+
+
     .presenter-section h3 {
       font-size: 13px;
       font-weight: 700;
@@ -836,6 +861,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="12">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(37,99,235,0.1);color:var(--c1)">VIEW 1 · 프로세스 엔드투엔드 재설계</div>
@@ -858,6 +884,10 @@
         <p>애널리스트 업무 50~70% AI 대체 가능 체감. 내부 GPU 서버(H100) RAG 챗봇 구축 착수. AI 거버넌스 위원회 설립 계획.</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/01_최우석_AI를_활용한_신용평가사_업무효율화_발표자료.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -866,6 +896,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="13">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(37,99,235,0.1);color:var(--c1)">VIEW 1 · 프로세스 엔드투엔드 재설계</div>
@@ -889,6 +920,10 @@
         <p>실제 1심 사건 입력 시 판결과 유사한 결론 도출 검증. 업무 효율성 3배 이상 향상 기대. AI 테크 시스터 컴퍼니 이그니스 랜다 설립(GPU 2장 보유).</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/02_김학훈_AI_기반_법률_문서_처리_및_모의공방_서비스_개발.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -897,6 +932,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="14">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(217,119,6,0.1);color:var(--c2)">VIEW 2 · 레거시 및 규제·인프라 극복</div>
@@ -920,6 +956,10 @@
         <p>동일 질문 일관된 답변·트리 구조 사이테이션·ACL 권한 분리 달성. AI 기본법 대응 가능. 2026년 상반기 MVP 완성, 하반기 본격 도입 목표.</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/03_남효승_LLM_Wiki_기반_건축_설계_지식_자산화_전략.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -928,6 +968,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="15">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(217,119,6,0.1);color:var(--c2)">VIEW 2 · 레거시 및 규제·인프라 극복</div>
@@ -950,6 +991,10 @@
         <p>도금 전류 밀도 최적화 AI 이미 양산 적용 중. 400억 투자·연간 250억+ 절감·2년 내 ROI 목표. 3개년 플랜(60%→90% 필터링률 단계적 향상). 은상동 자회사 설립 완료.</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/04_조순진_AI_기반의_외관검사_혁신.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -958,6 +1003,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="16">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(37,99,235,0.1);color:var(--c1)">VIEW 1 · 프로세스 엔드투엔드 재설계</div>
@@ -980,6 +1026,10 @@
         <p>포트폴리오 대시보드·딜 소싱 네비게이터 MVP 완성. 예비 투심 3배 증가. 피지컬 AI·AI 인프라 분야 업계 대비 5~6개월 선행 투자 성과. 카카오 AI 도시 프로젝트 5년간 500억 예산 확정.</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/05_김도영_Venture_Capital_AI_transformation.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -988,6 +1038,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="17">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(37,99,235,0.1);color:var(--c1)">VIEW 1 · 프로세스 엔드투엔드 재설계</div>
@@ -1010,6 +1061,10 @@
         <p>혼자 할 때 대비 집필 속도 현저히 향상. 초고 품질 상승으로 출판사가 "할 일이 없다" 반응. 10% 인세 계약 체결. 후속 2권(AI 시대 생존 방법론) 시리즈 기획 중.</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/06_전행진_AI와_함께_책을_쓴다는_것.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -1018,6 +1073,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="18">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(5,150,105,0.1);color:var(--c3)">VIEW 3 · 도메인 지식 무기화</div>
@@ -1041,6 +1097,10 @@
         <p>한전·한국전기안전공사와 200억 국책 과제 수주. KT 40억 프로젝트 체결. 서울대 건물 전력 12% 절감. 사내 AX 시행착오 3가지 극복. 연구 참여율 조정 자동화가 최고 성과.</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/07_배승환_AI_프로젝트와_AX문화도입.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -1049,6 +1109,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="19">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(217,119,6,0.1);color:var(--c2)">VIEW 2 · 레거시 및 규제·인프라 극복</div>
@@ -1071,6 +1132,10 @@
         <p>AI 구독비 연간 2억 원 대비 80% 절감. 코딩 어시스턴트 계약 완료. 모노클 AI 상장사 첫 고객 사례. 이커머스 셀러 신용평가 모델 데이터 결합 신청 단계.</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/08_정훈_전사_AX_추진_및_성과.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -1079,6 +1144,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="20">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(124,58,237,0.1);color:var(--c4)">VIEW 4 · 린 AX 및 문화 확산</div>
@@ -1101,6 +1167,10 @@
         <p>23년 연속 적자 해소(2026년 1분기). 개발자 전원 Claude Max 제공. 과기부 GPU 연간 7억 원 지원 확정. 전사 AX 챌린지 운영. 투자 유치 완료.</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/09_최인욱_AI_기반_개인거래_Trust_Infra_구축_전략.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -1109,6 +1179,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="21">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(5,150,105,0.1);color:var(--c3)">VIEW 3 · 도메인 지식 무기화</div>
@@ -1132,6 +1203,10 @@
         <p>제주 크루즈 스마트 관광 협약·인천관광공사 협약 체결. GPT/Gemini 대비 공간 정보 동선 설계 품질 차별화. 수채화 풍 AI 이미지 포함 상품 소개서 생성 완성. 하반기 B2B 영업 진입 목표.</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/10_김홍래_휴플_AX.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -1140,6 +1215,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="22">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(220,38,38,0.1);color:var(--c5)">VIEW 5 · 미래 신사업 확장</div>
@@ -1162,6 +1238,10 @@
         <p>4개 글로벌 클라이언트 대상 PoC 진행. AI 스타트업 스토리텔링 신사업 추진. 코가 로보틱스 홍보→HDC 인수 성공 사례. 'AI를 가장 잘 쓰는 나라' 국가 캠페인 기획 중.</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/11_이근우_PR_Intelligence_Platform_개념_설계와_구현_여정.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -1170,6 +1250,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="23">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(124,58,237,0.1);color:var(--c4)">VIEW 4 · 린 AX 및 문화 확산</div>
@@ -1192,6 +1273,10 @@
         <p>허스트 그룹 LOI 체결(50:50 투자). 평택 공장 모듈러 주택 재배치 지시 완료. 10년 지연 스마트팩토리 가시화 진행. 유진투자증권 ETF 상품 출시 지시. 그룹 전체 구조조정 계획 수립.</p>
       </div>
     </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/12_유경선_AI_기반_경영자_의사결정의_체험실행과_고도화_방안.pdf" title="발표자료"></iframe>
+    </div>
   </div>
 </div>
 
@@ -1200,6 +1285,7 @@
 ───────────────────────────────────────── -->
 <div class="slide" data-idx="24">
   <div class="presenter-slide">
+    <div class="presenter-left">
     <div class="presenter-header">
       <div class="presenter-badges">
         <div class="view-badge" style="background:rgba(124,58,237,0.1);color:var(--c4)">VIEW 4 · 린 AX 및 문화 확산</div>
@@ -1221,6 +1307,10 @@
         <h3 style="color:var(--c4)">혁신 성과</h3>
         <p>신규 상품 등록 2배 증가. 월 거래액 200억→400억+ 달성. AI 전환 우수 사례 표창(중기공). 전 세계 최초 사회적 가치 AI 기업 인증. 동대문 DDP 운영사 선정(20점 차 1등). 시리즈A 50억 커밋 확정.</p>
       </div>
+    </div>
+    </div>
+    <div class="presenter-pdf">
+      <iframe src="pdfs/13_박세현_End-to-End_AI_B2B_SCM_시스템.pdf" title="발표자료"></iframe>
     </div>
   </div>
 </div>
